@@ -13,5 +13,5 @@ def remRep(sent):
     answer = [word for word in words if wordCount[word] == 1]
     return " ".join(answer)
 
-sentence = "This is a sentence sentence is a haha no"
+sentence = input()
 print(remRep(sentence))

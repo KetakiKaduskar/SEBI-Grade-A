@@ -12,5 +12,5 @@ def removeDup(sent):
 
     return " ".join(uniqueWords)
 
-sentence = "This is a sentence sentence is a"
+sentence = input()
 print(removeDup(sentence))
