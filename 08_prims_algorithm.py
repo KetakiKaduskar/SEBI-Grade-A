@@ -61,8 +61,7 @@ class priorityQueue:
         self.queue = sorted(self.queue, key=lambda x:x.wt)
         return self.queue.pop(0)
 
-def prims(pq, visited, graph):
-    
+def prims():
     solution = []
     minLength = 0
 
@@ -72,6 +71,7 @@ def prims(pq, visited, graph):
         if visited[rem.v]:
             continue     
         visited[rem.v] = True
+
         solution.append(rem.v)
         minLength += rem.wt
 
@@ -81,11 +81,14 @@ def prims(pq, visited, graph):
 
     return (solution, minLength)
 
-graph = {}
 def addValue(key, value):
     if key not in graph:
         graph[key] = []
     graph[key].append(value)
+
+
+graph = {}
+pq = priorityQueue()
 
 n, m = map(int, input().strip().split())
 for _ in range(m):
@@ -94,11 +97,10 @@ for _ in range(m):
     addValue(dest1, Edge(dest1, dest2, wt))
     addValue(dest2, Edge(dest2, dest1, wt))
 
-pq = priorityQueue()
 keys = list(graph.keys())
 pq.add(Pair(min(keys[0], keys[1]), None, 0))
 visited = {key:False for key in keys}
-ans, val = prims(pq, visited, graph)
+network, wire = prims()
 
-print(" ".join(ans))
-print(val)
+print(" ".join(network))
+print(wire)
