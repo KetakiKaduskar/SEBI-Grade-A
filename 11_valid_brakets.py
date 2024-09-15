@@ -27,18 +27,23 @@ def check_brackets(string):
             if stack and stack[-1] == bracket_map[char]:
                 stack.pop()
             else:
-                missmatch += 1
-                break
+                missmatch = 1
     
     if float(putInStack) == len(string)/2:
         if missmatch:
-            return "MISSMATCH"
+            return "MISMATCH"
         else:
             return "VALID"
     elif float(putInStack) < len(string)/2:
-        return "TOO MANY CLOSING"
+        if len(stack) == 0:
+            return "TOO MANY CLOSING"
+        else:
+            return "MISMATCH"
     else:
-        return "TOO MANY OPENING"
+        if missmatch:
+            return "MISMATCH"
+        else:
+            return "TOO MANY OPENING"
     
 
 # Input
